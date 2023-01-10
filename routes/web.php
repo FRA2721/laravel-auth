@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// /Admin route creation (middleware check);
-Route::get('/admin', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.dashboard');
+// group routes to get all the routes that i need;
+Route::middleware(["auth", "verified"])
+    ->name("admin.")
+    ->prefix("admin")
+    ->group(function () {
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
+        // all routes inside the function
+        Route::get("/", [DashboardController::class, "index"])->name("dashboard"); // /admin.dashboard
+        Route::resource("posts", PostController::class)->parameters(["posts" => "posts:slug"]);
+    });
 
 require __DIR__.'/auth.php';
