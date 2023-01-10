@@ -67,7 +67,7 @@
                       <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.posts.index' ? 'bg-secondary' : '' }}"
                           href="{{ route('admin.posts.index') }}">
                           <i class="fa-solid fa-list"></i>
-                          Post
+                          Posts
                       </a>
                     </li>
 
@@ -85,9 +85,9 @@
     </div>
 
     {{-- footer section --}}
-    <footer>
+    {{-- <footer>
       <h6>example of a footer section</h6>
-    </footer>
+    </footer> --}}
     {{-- /footer section --}}
   </div>
 </body>

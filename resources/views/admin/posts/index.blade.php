@@ -12,7 +12,7 @@
             <tr>
               <th scope="col">Title:</th>
               <th scope="col">Date:</th>
-              <th scope="col">Operations::</th>
+              <th scope="col">Operations:</th>
             </tr>
           </thead>
             <tbody>
