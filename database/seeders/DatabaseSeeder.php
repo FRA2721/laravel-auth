@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // call
+        // call to all the seeders that i need;
         $this->call([
             PostSeeder::class
         ]);

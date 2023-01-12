@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        // return view("admin.posts.create");
+        return view("admin.posts.create");
     }
 
     /**
@@ -40,12 +40,14 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        // $data_received = $request->all();
-        // $data_received["slug"] = Str::slug($data_received["title"]);
-        // $post = new Post();
-        // $post->fill($data_received);
-        // $post->save();
-        // return redirect()->route("admin.posts.show", $post->slug);
+        $data_received = $request->validated();
+        $data_received["slug"] = Post::generateSlug($data_received["title"]);
+        $post = new Post();
+        $post->fill($data_received);
+        $post->save();
+        // $post = Post::create($date_received); fillable is important...
+        
+        return redirect()->route("admin.posts.index", $post->slug);
     }
 
     /**

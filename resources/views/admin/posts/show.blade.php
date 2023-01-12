@@ -2,6 +2,11 @@
 
 @section('content')
   <div class="container">
+    <div class="text-start">
+      <a class="btn btn-success mt-4" href="{{ route('admin.posts.index') }}">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+    </div>
     <div class="row justify-content-center mt-5">
       <div class="col-8">
         <h1 class="text-center mt-3">{{ $post->title }}</h1>
