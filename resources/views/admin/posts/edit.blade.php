@@ -15,15 +15,15 @@
             </div>
           @endif
         <form action="{{ route('admin.posts.update', $post->slug) }}" method="POST">
-            @csrf
             @method('PUT')
+            @csrf
 
             <div class="mb-3">
               <label for="title" class="form-label">Title:</label>
               <input type="text" class="form-control" id="title" name="title"
                     value="{{ old('title', $post->title) }}">
             </div>
-            
+
             <div class="mb-3">
               <label for="link" class="form-label">Link:</label>
               <input type="text" class="form-control" id="link"

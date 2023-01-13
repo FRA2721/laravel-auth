@@ -40,7 +40,7 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $data_received = $request->validated();
+        $data_received = $request->all();
         $data_received["slug"] = Post::generateSlug($data_received["title"]);
         $post = new Post();
         $post->fill($data_received);

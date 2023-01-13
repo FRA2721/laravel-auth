@@ -26,7 +26,7 @@ class UpdatePostRequest extends FormRequest
     {
         // validation rules
         return [
-            "title" => ["required", "max:150", Rule::unique("projects", "title")->ignore($this->project)],
+            "title" => ["required", "max:150", Rule::unique("posts", "title")->ignore($this->project)],
             "description" => ["nullable"],
             "link" => ["max:255"]
         ];
