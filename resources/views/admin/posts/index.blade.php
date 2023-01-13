@@ -23,24 +23,24 @@
                   <th scope="row">{{ $post->title }}</th>
                   <td>{{ $post->created_at }}</td>
                   <td>
-                      <a class="btn btn-success" href="{{ route('admin.posts.show', $post->slug) }}">
-                        <i class="fa-solid fa-eye"></i>
-                      </a>
+                    <a class="btn btn-success" href="{{ route('admin.posts.show', $post->slug) }}">
+                      <i class="fa-solid fa-eye"></i>
+                    </a>
 
-                      <a class="btn btn-warning m-2" href="{{ route('admin.posts.edit', $post->slug) }}">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                      </a>
+                    <a class="btn btn-warning m-2" href="{{ route('admin.posts.edit', $post->slug) }}">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
                       
-                      <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST"
-                          class="d-inline">
-                        @csrf
-                        @method('DELETE')
+                    <form action="{{ route('admin.posts.destroy', $post->slug) }}" method="POST"
+                        class="d-inline">
+                      @csrf
+                      @method('DELETE')
 
                       <button type="submit" class="btn btn-danger">
                         <i class="fa-solid fa-trash"></i>
                       </button>
 
-                    </form>
+                      </form>
                   </td>
                 </tr>
               @endforeach

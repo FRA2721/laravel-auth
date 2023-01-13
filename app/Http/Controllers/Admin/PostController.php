@@ -69,7 +69,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        // return view("admin.posts.edit", compact("post"));
+        return view("admin.posts.edit", compact("post"));
     }
 
     /**
@@ -81,10 +81,10 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        // $data_received = $request->all();
-        // $data_received["slug"] = Str::slug($data_received["title"]);
-        // $post->update($data_received);
-        // return redirect()->route("admin.projects.show", $post->slug);
+        $data_received = $request->all();
+        $data_received["slug"] = Post::generateSlug($data_received["title"]);
+        $post->update($data_received);
+        return redirect()->route("admin.posts.index", $post->slug);
     }
 
     /**
