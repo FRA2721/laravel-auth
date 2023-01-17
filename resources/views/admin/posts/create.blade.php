@@ -19,7 +19,7 @@
         @endif
 
         {{-- form: store action --}}
-        <form action="{{ route('admin.posts.store') }}" method="POST">
+        <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
 
           {{-- title section --}}
@@ -34,6 +34,12 @@
             <input type="text" class="form-control" id="link" name="link"value="{{ old('link') }}">
           </div>
           
+          {{-- cover image section --}}
+          <div class="mb-3">
+            <label for="cover_image" class="form-label">Cover image:</label>
+            <input type="file" class="form-control" id="cover_image" name="cover_image">
+          </div>
+
           {{-- description section --}}
           <div class="mb-3">
             <label for="description" class="form-label">Description:</label>

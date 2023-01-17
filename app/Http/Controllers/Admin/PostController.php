@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 // use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -42,10 +43,17 @@ class PostController extends Controller
     {
         $data_received = $request->all();
         $data_received["slug"] = Post::generateSlug($data_received["title"]);
-        $post = new Post();
-        $post->fill($data_received);
-        $post->save();
-        // $post = Post::create($date_received); fillable is important...
+        // $post = new Post();
+        // $post->fill($data_received);
+        // $post->save();
+        
+        // check for the cover image key
+        if ($request->hasFile("cover_image")) {
+            $path = Storage::put("post_images", $data_received["cover_image"]);
+            $data_received["cover_image"] = $path;
+        }
+
+        $post = Post::create($data_received); //fillable is important...
         
         return redirect()->route("admin.posts.index", $post->slug);
     }
