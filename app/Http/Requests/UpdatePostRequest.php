@@ -28,7 +28,8 @@ class UpdatePostRequest extends FormRequest
         return [
             "title" => ["required", "max:150", Rule::unique("posts", "title")->ignore($this->project)],
             "description" => ["nullable"],
-            "link" => ["max:255"]
+            "link" => ["max:255"],
+            "cover_image" => ["nullable", "image", "max:512"]
         ];
     }
 }

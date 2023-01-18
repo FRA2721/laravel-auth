@@ -91,6 +91,17 @@ class PostController extends Controller
     {
         $data_received = $request->all();
         $data_received["slug"] = Post::generateSlug($data_received["title"]);
+
+        if ($request->hasFile("cover_image")) {
+
+            if ($post->cover_image) {
+                Storage::delete($post->cover_image);
+            }
+
+            $path = Storage::put("post_images", $data_received["cover_image"]);
+            $data_received["cover_image"] = $path;
+        }
+        
         $post->update($data_received);
         return redirect()->route("admin.posts.index", $post->slug);
     }

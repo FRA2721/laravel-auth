@@ -13,6 +13,10 @@
         <div class="d-flex justify-content-between mt-4">
           <p>{{ $post->slug }}</p>
         </div>
+
+        <div class="text-center my-3">
+          <img src="{{ asset('storage/' . $post->cover_image) }}" alt="{{ $post->title }} image" class="w-50">
+        </div>
         <p class="mt-3">{{ $post->description }}</p>
       </div>
     </div>

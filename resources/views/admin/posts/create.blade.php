@@ -40,6 +40,11 @@
             <input type="file" class="form-control" id="cover_image" name="cover_image">
           </div>
 
+          {{-- cover image (preview) --}}
+          <div>
+            <img id="image_preview" src="" alt="">
+          </div>
+
           {{-- description section --}}
           <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
